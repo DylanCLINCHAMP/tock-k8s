@@ -1,5 +1,5 @@
 # https://docs.aws.amazon.com/fr_fr/eks/latest/userguide/alb-ingress.html
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tock-studio
@@ -12,5 +12,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: bot-admin-svc
-              servicePort: 8080
+              service:
+                name: bot-admin-svc
+                port:
+                  number: 8080
